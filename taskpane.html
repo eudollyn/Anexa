@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anexa</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <script src="shared.js"></script>
+  <link rel="stylesheet" href="taskpane.css">
+</head>
+<body>
+  <header class="top">
+    <img src="assets/icon-64.png" alt="" class="logo">
+    <div class="titles">
+      <h1>Anexa</h1>
+      <p>Automação de anexos no Outlook</p>
+    </div>
+    <span id="pill" class="pill idle"><i></i><b>Carregando</b></span>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="card-head"><span class="badge">
+        <svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z M14 3v4h4 M9 13h6 M9 17h4"/></svg></span>
+        <div><h2>Arquivo padrão</h2><p>Arquivo que será anexado automaticamente</p></div>
+      </div>
+      <div class="file">
+        <div class="file-info">
+          <strong id="fileName">Nenhum arquivo selecionado</strong>
+          <small id="fileMeta">Escolha um arquivo para começar</small>
+        </div>
+        <label class="btn gold">Escolher arquivo<input id="fileInput" type="file" hidden></label>
+      </div>
+      <button id="attachNow" class="btn ghost full" hidden>Anexar neste e-mail agora</button>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><span class="badge">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3 M12 18.5v3 M2.5 12h3 M18.5 12h3 M5.3 5.3l2.1 2.1 M16.6 16.6l2.1 2.1 M5.3 18.7l2.1-2.1 M16.6 7.4l2.1-2.1"/></svg></span>
+        <div><h2>Automação</h2><p>Defina como a automação deve funcionar</p></div>
+      </div>
+      <label class="row"><span class="sw"><input type="checkbox" data-key="enabled"><i></i></span>
+        <span><b>Automação ligada</b><small>Age em todo e-mail novo, mesmo com este painel fechado</small></span></label>
+      <label class="row"><span class="sw"><input type="checkbox" data-key="autoAttach"><i></i></span>
+        <span><b>Anexar automaticamente</b><small>Adiciona o arquivo padrão ao abrir um e-mail novo</small></span></label>
+      <label class="row"><span class="sw"><input type="checkbox" data-key="autoSend"><i></i></span>
+        <span><b>Enviar automaticamente</b><small>Envia quando o destinatário estiver pronto</small></span></label>
+      <label class="row"><span class="sw"><input type="checkbox" data-key="sendReplies"><i></i></span>
+        <span><b>Enviar respostas também</b><small>Desligado: respostas e encaminhamentos só recebem o anexo</small></span></label>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><span class="badge">
+        <svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z M9 12l2.2 2.2L15.5 10"/></svg></span>
+        <div><h2>Regras</h2><p>Condições e validações para o envio</p></div>
+      </div>
+      <label class="row"><span class="sw"><input type="checkbox" data-key="requireValid"><i></i></span>
+        <span><b>Exigir destinatário válido</b><small>Não envia se algum endereço estiver incorreto</small></span></label>
+      <label class="row"><span class="sw"><input type="checkbox" data-key="validateFile"><i></i></span>
+        <span><b>Validar arquivo antes de enviar</b><small>Cancela o envio se o anexo for removido</small></span></label>
+      <div class="row delay">
+        <span><b>Tempo de espera</b><small>Destinatários sem mudanças por este tempo antes do envio</small></span>
+        <span class="num"><input id="delay" type="number" min="1" max="15" step="0.5"><em>s</em></span>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><span class="badge">
+        <svg viewBox="0 0 24 24"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg></span>
+        <div><h2>Status</h2><p>Estado atual da automação</p></div>
+      </div>
+      <ul class="status">
+        <li><i id="dotOutlook"></i><span><b>Outlook</b><small id="txtOutlook">Verificando...</small></span></li>
+        <li><i id="dotSend"></i><span><b>Envio automático</b><small id="txtSend">Verificando...</small></span></li>
+        <li><i id="dotFile"></i><span><b>Arquivo</b><small id="txtFile">Verificando...</small></span></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><span class="badge">
+        <svg viewBox="0 0 24 24"><path d="M9 7h11 M9 12h11 M9 17h11 M4.5 7h.01 M4.5 12h.01 M4.5 17h.01"/></svg></span>
+        <div><h2>Últimas ações</h2><p>Histórico deste computador</p></div>
+      </div>
+      <ul id="log" class="log"></ul>
+      <button id="clearLog" class="btn ghost small">Limpar registros</button>
+    </section>
+  </main>
+  <footer>Anexa v2.0.0 · Novo Outlook</footer>
+  <div id="toast" class="toast" hidden></div>
+  <script src="taskpane.js"></script>
+</body>
+</html>

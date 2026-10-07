@@ -1,0 +1,43 @@
+ANEXA 2.0 PARA O NOVO OUTLOOK
+
+POR QUE MUDOU
+O Novo Outlook não deixa nenhum programa externo controlá-lo (a técnica usada pelo
+Anexa.exe só funciona no Outlook Clássico). Por isso o Anexa virou um SUPLEMENTO do
+Outlook: ele roda dentro do próprio Novo Outlook, sem .exe e sem ficar na bandeja.
+
+O QUE ELE FAZ
+- Ao abrir um e-mail novo, anexa o arquivo padrão (sem duplicar).
+- Se "Enviar automaticamente" estiver ligado, envia quando houver destinatário válido
+  e a lista de destinatários ficar sem mudanças pelo tempo de espera (padrão: 3 s).
+- Respostas e encaminhamentos recebem o anexo, mas só são enviados sozinhos se você
+  ligar "Enviar respostas também".
+- Antes de enviar confere se o anexo continua no e-mail.
+- Funciona com o painel fechado. O painel serve só para configurar e ver o histórico.
+
+INSTALAÇÃO (uma vez só)
+1. Publique esta pasta na internet com https. O jeito mais simples e gratuito é o
+   GitHub Pages:
+   a. Crie uma conta em github.com e um repositório chamado "anexa".
+   b. Envie todos os arquivos desta pasta (inclusive a pasta assets).
+   c. Em Settings > Pages, escolha a branch "main" e salve.
+   d. O endereço será https://SEU-USUARIO.github.io/anexa
+   Só o código do suplemento fica público. O arquivo que você escolhe como anexo
+   fica guardado apenas no seu computador.
+2. Execute CONFIGURAR.bat e cole esse endereço. Ele cria o manifest-pronto.xml.
+3. No Novo Outlook, abra https://aka.ms/olksideload
+   Vá em "Meus suplementos" > "Suplementos personalizados" > "Adicionar um suplemento
+   personalizado" > "Adicionar do arquivo" e escolha o manifest-pronto.xml.
+4. Abra um e-mail novo, clique no botão "Anexa" (fica em "Aplicativos" ou no menu "...")
+   e escolha o arquivo padrão.
+5. Primeiro teste: desligue "Enviar automaticamente", abra um e-mail novo e confira se
+   o arquivo entra sozinho. Depois ligue o envio.
+
+OBSERVAÇÕES
+- Contas corporativas: o administrador do Microsoft 365 pode bloquear suplementos
+  personalizados. Nesse caso ele pode instalar o manifest para você pelo
+  Centro de administração.
+- O envio automático depende de uma função recente do Outlook (Mailbox 1.15).
+  Se o seu Outlook não tiver, o painel avisa e o Anexa só anexa.
+- O arquivo padrão pode ter até 25 MB (limite do Outlook para suplementos).
+- Se você mudar de computador, escolha o arquivo de novo no painel.
+- O Anexa.exe (versão 1.1.0) continua servindo para quem usa o Outlook Clássico.
